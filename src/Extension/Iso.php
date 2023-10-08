@@ -6,6 +6,7 @@
  * @copyright	Copyright (C) 2021 ConseilGouz. All rights reserved.
  * @license		GNU/GPL v2; see LICENSE.php
  **/
+namespace ConseilGouz\Plugin\Cgisotope\Iso\Extension; 
 defined( '_JEXEC' ) or die( 'Restricted access' );
 use Joomla\CMS\Factory;
 use Joomla\CMS\Access\Access;
@@ -14,8 +15,9 @@ use \Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Form\Form;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Plugin\CMSPlugin;
 
-class plgCGIsotopeIso extends JPlugin
+class Iso extends CMSPlugin
 {	
 	/*
 	*	onIsotopeFilter : add some filtering options
