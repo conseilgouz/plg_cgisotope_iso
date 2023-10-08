@@ -7,7 +7,7 @@
 	<authorUrl>www.conseilgouz.com</authorUrl>
 	<copyright>ConseilGouz</copyright>
 	<license>GNU/GPL</license>
-	<version>2.0.1</version>
+	<version>2.0.2</version>
 	<description>PLG_CGISOTOPE_ISO_DESCRIPTION</description>
 	<namespace path="src">ConseilGouz\Plugin\Cgisotope\Iso</namespace>
 	<scriptfile>script.php</scriptfile>
@@ -24,7 +24,8 @@
 	</languages>
 	<config>
 	<fields name="params">
-		<fieldset name="basic">
+		<fieldset name="basic" addfieldprefix="ConseilGouz\Plugin\Cgisotope\Iso\Field">
+				<field name="version" type="version" extension="iso" margintop="-3em" xml="/plugins/cgisotope/iso/iso.xml"/>
 		</fieldset>
 	</fields>
 	</config>
