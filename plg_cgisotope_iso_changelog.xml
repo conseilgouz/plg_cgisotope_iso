@@ -3,6 +3,18 @@
 		<element>iso</element>
 		<type>plugin</type>
 		<group>cgisotope</group>
+		<version>2.1.3</version>
+        <note>
+            <item>11/04/2025</item>
+        </note>
+        <fix>
+            <item>unexpected token "public", expecting "{"</item>
+        </fix>
+	</changelog>
+	<changelog>
+		<element>iso</element>
+		<type>plugin</type>
+		<group>cgisotope</group>
 		<version>2.1.2</version>
         <note>
             <item>11/04/2025</item>

@@ -1,9 +1,8 @@
 <?php 
 /**
- * @version		2.0.2
  * @package		CG Isotope plugin
  * @author		ConseilGouz
- * @copyright	Copyright (C) 2023 ConseilGouz. All rights reserved.
+ * @copyright	Copyright (C) 2025 ConseilGouz. All rights reserved.
  * @license		GNU/GPL v2; see LICENSE.php
  **/
 namespace ConseilGouz\Plugin\Cgisotope\Iso\Extension; 
@@ -19,7 +18,7 @@ use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\Event\SubscriberInterface;
 
 class Iso extends CMSPlugin implements SubscriberInterface
-
+{
     /**
      * @inheritDoc
      *
