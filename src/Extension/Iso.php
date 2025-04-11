@@ -16,8 +16,26 @@ use Joomla\CMS\Form\Form;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Plugin\CMSPlugin;
+use Joomla\Event\SubscriberInterface;
 
-class Iso extends CMSPlugin
+class Iso extends CMSPlugin implements SubscriberInterface
+
+    /**
+     * @inheritDoc
+     *
+     * @return string[]
+     *
+     * @since 4.1.0
+     */
+    public static function getSubscribedEvents(): array
+    {
+        return [
+            'onCGIsotopeFilter'	=> 'filter',
+            'onCGIsotopeRender'	=> 'render',
+            'onCGIsotopeBefore'	=> 'before',
+        ];
+    }
+
 {	
 	/*
 	*	onIsotopeFilter : add some filtering options
@@ -27,7 +45,11 @@ class Iso extends CMSPlugin
 	*	
 	*	@return boolean    always true
 	*/
-	public function onCGIsotopeFilter($context, &$items) {
+    public function filter($event)
+    {
+        $context	= $event[0];
+        $items		= $event[1];
+
 		if ($context != 'com_cgisotope.article') return true;
 		
 		return true;
@@ -38,11 +60,16 @@ class Iso extends CMSPlugin
 	*   @context  string   must contain com_cgisotope.article
 	*   @article object    one article
 	*   @params  object    isotope params
-	*   @page    int       page number (pagination)
+	*   @page    obect     full item object
 	*	
 	*	@return boolean    always true
 	*/
-	public function onCGIsotopeRender($context, &$article, &$params, $page = 0) {
+    public function render($event) // ($context, &$article, &$params, $item)
+    {
+        $context	= $event[0];
+        $article	= $event[1];
+        $params		= $event[2];
+        $item		= $event[3];
 		if ($context != 'com_cgisotope.article') return true;
 
 		// add {myiso} shortcode  
@@ -63,7 +90,10 @@ class Iso extends CMSPlugin
 	*	@return boolean    always true
 
 	*/
-	public function onCGIsotopeBefore($context,$obj) {
+    public function before($event) //($context, $obj)
+    {
+        $context    = $event[0];
+        $obj        = $event[1];
 		if ($context != 'com_cgisotope.article') return true;
 
 		return true;
