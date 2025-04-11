@@ -7,7 +7,7 @@
 	<authorUrl>www.conseilgouz.com</authorUrl>
 	<copyright>ConseilGouz</copyright>
 	<license>GNU/GPL</license>
-	<version>2.1.0</version>
+	<version>2.1.1</version>
 	<description>PLG_CGISOTOPE_ISO_DESCRIPTION</description>
 	<namespace path="src">ConseilGouz\Plugin\Cgisotope\Iso</namespace>
 	<scriptfile>script.php</scriptfile>

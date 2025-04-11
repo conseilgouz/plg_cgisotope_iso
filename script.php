@@ -1,17 +1,17 @@
 <?php
 /**
-* CG Isotope Plugin  - Joomla 4.x Module 
-* Version			: 2.0.0
-* copyright 		: Copyright (C) 2023 ConseilGouz. All rights reserved.
-* license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+* CG Isotope Plugin  - Joomla 4.x/5.x Plugin
+* copyright 		: Copyright (C) 2025 ConseilGouz. All rights reserved.
+* license    		: https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
 */
 // No direct access to this file
 defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
-use Joomla\Filesystem\Folder;
 use Joomla\CMS\Version;
+use Joomla\Database\DatabaseInterface;
 use Joomla\Filesystem\File;
+use Joomla\Filesystem\Folder;
 
 class plgcgisotopeisoInstallerScript
 {
@@ -22,6 +22,7 @@ class plgcgisotopeisoInstallerScript
 	private $extname                 = 'iso';
 	private $previous_version        = '';
 	private $dir           = null;
+    private $lang          = null;
 	private $installerName = 'plgcgisotopeisoinstaller';
 	public function __construct()
 	{
@@ -90,7 +91,7 @@ class plgcgisotopeisoInstallerScript
 				File::delete($file);
 			}
 		}
-		$db = Factory::getDbo();
+		$db = Factory::getContainer()->get(DatabaseInterface::class);
         $conditions = array(
             $db->qn('type') . ' = ' . $db->q('plugin'),
             $db->qn('element') . ' = ' . $db->quote($this->extname)
@@ -104,7 +105,7 @@ class plgcgisotopeisoInstallerScript
 	        $db->execute();
         }
         catch (RuntimeException $e) {
-            JLog::add('unable to enable '.$this->name, JLog::ERROR, 'jerror');
+            Factory::getApplication()->enqueueMessage(('unable to enable '.$this->name,'error');
         }
 
 	}
@@ -151,7 +152,7 @@ class plgcgisotopeisoInstallerScript
 			JPATH_PLUGINS . '/system/' . $this->installerName . '/language',
 			JPATH_PLUGINS . '/system/' . $this->installerName,
 		]);
-		$db = Factory::getDbo();
+		$db = Factory::getContainer()->get(DatabaseInterface::class);
 		$query = $db->getQuery(true)
 			->delete('#__extensions')
 			->where($db->quoteName('element') . ' = ' . $db->quote($this->installerName))
@@ -161,5 +162,18 @@ class plgcgisotopeisoInstallerScript
 		$db->execute();
 		Factory::getCache()->clean('_system');
 	}
-	
+    
+    private function delete($files = [])
+    {
+        foreach ($files as $file) {
+            if (is_dir($file)) {
+                Folder::delete($file);
+            }
+
+            if (is_file($file)) {
+                File::delete($file);
+            }
+        }
+    }
+
 }
