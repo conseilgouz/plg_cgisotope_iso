@@ -105,7 +105,7 @@ class plgcgisotopeisoInstallerScript
 	        $db->execute();
         }
         catch (RuntimeException $e) {
-            Factory::getApplication()->enqueueMessage(('unable to enable '.$this->name,'error');
+            Factory::getApplication()->enqueueMessage('unable to enable '.$this->name,'error');
         }
 
 	}
