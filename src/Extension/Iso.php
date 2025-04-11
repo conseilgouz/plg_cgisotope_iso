@@ -35,7 +35,6 @@ class Iso extends CMSPlugin implements SubscriberInterface
         ];
     }
 
-{	
 	/*
 	*	onIsotopeFilter : add some filtering options
 	*
