@@ -9,6 +9,7 @@
         </note>
         <change>
             <item>Event onCGIsotopeRender : add item object</item>
+            <item>user getSubscribedEvents</item>
         </change>
 	</changelog>
 	<changelog>
